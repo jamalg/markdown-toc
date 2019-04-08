@@ -8,8 +8,6 @@
  */
 
 var utils = require('./lib/utils');
-var querystring = require('querystring');
-
 /**
  * expose `toc`
  */
@@ -187,7 +185,7 @@ function linkify(tok, options) {
     opts.num = tok.seen;
     var text = titleize(tok.content, opts);
     var slug = utils.slugify(tok.content, opts);
-    slug = querystring.escape(slug);
+    slug = encodeURIComponent(slug);
     if (opts && typeof opts.linkify === 'function') {
       return opts.linkify(tok, text, slug, opts);
     }
